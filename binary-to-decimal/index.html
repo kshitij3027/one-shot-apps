@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bin2Dec</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <div class="card">
+      <header>
+        <h1>Bin2Dec</h1>
+        <p class="subtitle">Binary to Decimal Converter</p>
+      </header>
+
+      <div class="input-group">
+        <label for="binary-input">Enter binary number</label>
+        <input
+          type="text"
+          id="binary-input"
+          placeholder="e.g. 10110101"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <div id="error-message" class="error-message" role="alert" hidden></div>
+        <p class="hint">Type any combination of 0s and 1s</p>
+      </div>
+
+      <div class="output-group">
+        <label for="decimal-output">Decimal result</label>
+        <input
+          type="text"
+          id="decimal-output"
+          readonly
+          placeholder="—"
+        >
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
