@@ -1,0 +1,10 @@
+# Environment
+.env
+
+# OS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+requirements.md

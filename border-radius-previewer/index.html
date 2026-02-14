@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Radius Previewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Border Radius Previewer</h1>
+
+    <section class="preview-section">
+      <div id="preview-box" class="preview-box"></div>
+    </section>
+
+    <section class="controls-section">
+      <h2>Corner Radii</h2>
+      <div class="inputs-grid" id="simple-inputs">
+        <label>
+          <span>Top-left</span>
+          <input type="number" id="tl" min="0" value="10" data-corner="tl">
+        </label>
+        <label>
+          <span>Top-right</span>
+          <input type="number" id="tr" min="0" value="10" data-corner="tr">
+        </label>
+        <label>
+          <span>Bottom-right</span>
+          <input type="number" id="br" min="0" value="10" data-corner="br">
+        </label>
+        <label>
+          <span>Bottom-left</span>
+          <input type="number" id="bl" min="0" value="10" data-corner="bl">
+        </label>
+      </div>
+
+      <div class="advanced-toggle">
+        <button type="button" id="advanced-toggle" aria-pressed="false">Advanced (8 values)</button>
+      </div>
+
+      <div class="inputs-grid advanced-inputs" id="advanced-inputs" hidden>
+        <h3>Horizontal radii</h3>
+        <label>
+          <span>Top-left H</span>
+          <input type="number" id="tl-h" min="0" value="10" data-advanced="tl-h">
+        </label>
+        <label>
+          <span>Top-right H</span>
+          <input type="number" id="tr-h" min="0" value="10" data-advanced="tr-h">
+        </label>
+        <label>
+          <span>Bottom-right H</span>
+          <input type="number" id="br-h" min="0" value="10" data-advanced="br-h">
+        </label>
+        <label>
+          <span>Bottom-left H</span>
+          <input type="number" id="bl-h" min="0" value="10" data-advanced="bl-h">
+        </label>
+        <h3>Vertical radii</h3>
+        <label>
+          <span>Top-left V</span>
+          <input type="number" id="tl-v" min="0" value="10" data-advanced="tl-v">
+        </label>
+        <label>
+          <span>Top-right V</span>
+          <input type="number" id="tr-v" min="0" value="10" data-advanced="tr-v">
+        </label>
+        <label>
+          <span>Bottom-right V</span>
+          <input type="number" id="br-v" min="0" value="10" data-advanced="br-v">
+        </label>
+        <label>
+          <span>Bottom-left V</span>
+          <input type="number" id="bl-v" min="0" value="10" data-advanced="bl-v">
+        </label>
+      </div>
+    </section>
+
+    <section class="output-section">
+      <h2>Generated CSS</h2>
+      <div class="css-output" id="css-output">border-radius: 10px 10px 10px 10px;</div>
+      <button type="button" id="copy-btn">Copy CSS</button>
+      <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
