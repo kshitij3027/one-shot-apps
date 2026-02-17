@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 320px;
+  padding: 1rem;
+  background: #16213e;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.display {
+  width: 100%;
+  min-height: 64px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #0f3460;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: right;
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+.entry-pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.btn {
+  min-height: 52px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #0f3460;
+  color: #eee;
+  transition: background 0.15s, transform 0.05s;
+}
+
+.btn:hover {
+  background: #1a4a7a;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 2px solid #e94560;
+  outline-offset: 2px;
+}
+
+.btn-fn {
+  background: #533483;
+  color: #fff;
+}
+
+.btn-fn:hover {
+  background: #6b44a0;
+}
+
+.btn-op {
+  background: #e94560;
+  color: #fff;
+}
+
+.btn-op:hover {
+  background: #ff6b6b;
+}
+
+.btn-equals {
+  grid-column: span 2;
+  background: #0d7377;
+  color: #fff;
+}
+
+.btn-equals:hover {
+  background: #14a3a8;
+}
