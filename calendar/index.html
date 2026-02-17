@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <button data-action="prev-month" class="btn btn-icon" aria-label="Previous month">&#8249;</button>
+        <button data-action="next-month" class="btn btn-icon" aria-label="Next month">&#8250;</button>
+        <button data-action="go-today" class="btn btn-text">Today</button>
+        <h1 id="month-title" aria-live="polite"></h1>
+      </div>
+      <div class="header-right">
+        <button data-action="toggle-theme" class="btn btn-icon" id="theme-btn" aria-label="Toggle theme">
+          <span id="theme-icon">&#9790;</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Weekday labels -->
+    <div class="weekdays">
+      <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+    </div>
+
+    <!-- Calendar grid -->
+    <div id="cal-grid" class="cal-grid"></div>
+
+    <!-- FAB for mobile -->
+    <button data-action="fab-create" class="fab" aria-label="Create event">+</button>
+
+    <!-- Event Modal -->
+    <dialog id="event-modal">
+      <form id="event-form" method="dialog">
+        <h2 id="modal-title">New Event</h2>
+
+        <div class="form-row">
+          <label for="evt-title">Title <span class="required">*</span></label>
+          <input type="text" id="evt-title" name="title" required maxlength="100" autocomplete="off">
+        </div>
+
+        <div class="form-row-pair">
+          <div class="form-row">
+            <label for="evt-date">Date <span class="required">*</span></label>
+            <input type="date" id="evt-date" name="date" required>
+          </div>
+          <div class="form-row">
+            <label for="evt-time">Time</label>
+            <input type="time" id="evt-time" name="time">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="evt-desc">Description</label>
+          <textarea id="evt-desc" name="description" rows="3" maxlength="500"></textarea>
+        </div>
+
+        <div class="form-row-pair">
+          <div class="form-row">
+            <label for="evt-color">Color</label>
+            <select id="evt-color" name="color">
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="red">Red</option>
+              <option value="amber">Amber</option>
+              <option value="purple">Purple</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="evt-reminder">Reminder</label>
+            <select id="evt-reminder" name="reminder">
+              <option value="0">None</option>
+              <option value="5">5 min before</option>
+              <option value="10">10 min before</option>
+              <option value="15">15 min before</option>
+              <option value="30">30 min before</option>
+              <option value="60">1 hour before</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" data-action="delete-event" class="btn btn-danger" id="delete-btn" hidden>Delete</button>
+          <div class="form-actions-right">
+            <button type="button" data-action="close-modal" class="btn btn-text">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
