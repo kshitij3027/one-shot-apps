@@ -1,0 +1,132 @@
+# E2E verification stories for notes-app
+# Append new stories here as features are added. Do not remove existing stories.
+
+stories:
+  - name: "App loads with empty state"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Verify the page loads successfully with the title "Notes" in the header
+      Verify a "+ New Note" button is visible in the header
+      Verify the sidebar shows an empty state message "No notes yet. Create one!"
+      Verify the editor area shows "Select a note or create a new one"
+
+  - name: "Create a new note"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Verify the editor panel appears with an empty title input and textarea
+      Type "My First Note" in the title input
+      Type "This is the body of my first note" in the textarea
+      Click the "Save" button
+      Verify the note appears in the sidebar list with the title "My First Note"
+
+  - name: "Select and view an existing note"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Test Note" in the title input
+      Type "Some content here" in the textarea
+      Click the "Save" button
+      Click on the note card titled "Test Note" in the sidebar
+      Verify the editor shows "Test Note" in the title input
+      Verify the editor shows "Some content here" in the textarea
+
+  - name: "Edit an existing note"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Original Title" in the title input
+      Type "Original body" in the textarea
+      Click the "Save" button
+      Click on the note card titled "Original Title" in the sidebar
+      Clear the title input and type "Updated Title"
+      Clear the textarea and type "Updated body content"
+      Click the "Save" button
+      Verify the sidebar shows "Updated Title" instead of "Original Title"
+
+  - name: "Delete a note"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Note To Delete" in the title input
+      Type "This will be deleted" in the textarea
+      Click the "Save" button
+      Verify "Note To Delete" appears in the sidebar
+      Click on the note card titled "Note To Delete"
+      Click the "Delete" button
+      Verify "Note To Delete" no longer appears in the sidebar
+      Verify the editor shows the empty state message
+
+  - name: "Notes persist after page reload"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Persistent Note" in the title input
+      Type "This should survive a reload" in the textarea
+      Click the "Save" button
+      Verify "Persistent Note" appears in the sidebar
+      Reload the page
+      Verify "Persistent Note" still appears in the sidebar after reload
+
+  - name: "Markdown preview renders correctly"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Markdown Test" in the title input
+      Type "# Heading\n\n**Bold text** and *italic text*\n\n- List item 1\n- List item 2" in the textarea
+      Click the "Save" button
+      Click the "Preview" tab
+      Verify the preview area renders a heading element
+      Verify the preview area shows bold and italic formatted text
+      Verify the preview area shows a bulleted list
+
+  - name: "Toggle between Edit and Preview modes"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Toggle Test" in the title input
+      Type "Some **markdown** content" in the textarea
+      Click the "Save" button
+      Verify the textarea is visible and the "Edit" tab is active
+      Click the "Preview" tab
+      Verify the textarea is hidden and the preview area is visible
+      Verify the "Preview" tab is active
+      Click the "Edit" tab
+      Verify the textarea is visible again and the preview area is hidden
+
+  - name: "Creation date displayed on note cards"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "Dated Note" in the title input
+      Type "Check the date" in the textarea
+      Click the "Save" button
+      Verify the note card for "Dated Note" displays a creation date in the format like "Feb 17, 2026" or similar month-day-year format
+
+  - name: "Multiple notes display correctly"
+    url: "http://localhost:8083"
+    workflow: |
+      Navigate to http://localhost:8083
+      Click the "+ New Note" button
+      Type "First Note" in the title input
+      Type "First body" in the textarea
+      Click the "Save" button
+      Click the "+ New Note" button
+      Type "Second Note" in the title input
+      Type "Second body" in the textarea
+      Click the "Save" button
+      Click the "+ New Note" button
+      Type "Third Note" in the title input
+      Type "Third body" in the textarea
+      Click the "Save" button
+      Verify all three notes ("First Note", "Second Note", "Third Note") are visible in the sidebar
+      Verify the newest note "Third Note" appears first in the list

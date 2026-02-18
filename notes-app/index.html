@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="header-title">Notes</h1>
+      <button class="btn btn-primary" data-action="new-note">+ New Note</button>
+    </header>
+
+    <main class="main">
+      <aside class="sidebar" id="sidebar">
+        <div class="note-list" id="note-list"></div>
+      </aside>
+
+      <section class="editor" id="editor">
+        <div class="editor-empty" id="editor-empty">
+          <p>Select a note or create a new one</p>
+        </div>
+        <div class="editor-content" id="editor-content" hidden>
+          <input
+            type="text"
+            class="editor-title"
+            id="editor-title"
+            placeholder="Note title..."
+            autocomplete="off"
+          >
+          <div class="editor-tabs">
+            <button class="tab active" data-action="tab-edit">Edit</button>
+            <button class="tab" data-action="tab-preview">Preview</button>
+          </div>
+          <textarea
+            class="editor-body"
+            id="editor-body"
+            placeholder="Write your note in Markdown..."
+          ></textarea>
+          <div class="editor-preview markdown-body" id="editor-preview" hidden></div>
+          <div class="editor-actions">
+            <button class="btn btn-primary" data-action="save-note">Save</button>
+            <button class="btn btn-danger" data-action="delete-note">Delete</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile back button (hidden on desktop) -->
+    <button class="back-btn" id="back-btn" data-action="back" hidden>
+      &#8592; Back
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
