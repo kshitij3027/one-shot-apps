@@ -1,0 +1,13 @@
+# E2E verification stories for pomodoro-app
+# Append new stories here as features are added. Do not remove existing stories.
+
+stories:
+  - name: "App loads with Pomodoro timer"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Verify the page loads successfully
+      Verify the page title or heading contains "Pomodoro"
+      Verify the timer display shows 25:00
+      Verify the session label indicates "Work"
+      Verify the four buttons Start, Pause, Stop, and Reset are visible
