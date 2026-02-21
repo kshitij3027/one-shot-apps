@@ -69,3 +69,11 @@ stories:
       Set "Long break every" to 4
       Complete 4 work-break cycles: Start work, wait for 00:00, then verify break (short for 1st, 2nd, 3rd; long for 4th)
       On the 4th break verify the session label shows "Long break" and the timer shows 02:00
+
+  - name: "Sound plays when session ends (manual check)"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Set Work (min) to 1
+      Click Start and allow the work timer to run to 00:00
+      Optionally verify that a short beep sound plays when the session ends (browser may require user interaction first)

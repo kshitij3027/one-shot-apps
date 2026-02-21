@@ -55,6 +55,24 @@
     if (elements.sessionLabel) elements.sessionLabel.textContent = state.session === 'work' ? 'Work' : (state.session === 'longBreak' ? 'Long break' : 'Break');
   }
 
+  function playSessionEndSound() {
+    try {
+      var C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return;
+      var ctx = new C();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.3);
+    } catch (e) {}
+  }
+
   function switchToNextSession() {
     if (state.session === 'work') {
       state.breakCount += 1;
@@ -78,6 +96,7 @@
       state.intervalId = null;
       state.isRunning = false;
       setInputsEnabled(true);
+      playSessionEndSound();
       switchToNextSession();
       render();
       return;

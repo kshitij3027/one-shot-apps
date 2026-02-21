@@ -16,3 +16,7 @@ Open [http://localhost:8085](http://localhost:8085) in your browser.
 
 - Vanilla JavaScript, HTML, CSS
 - Served via nginx in Docker (port 8085)
+
+## Features
+
+- **Sound:** When a session reaches 00:00, a short beep plays (Web Audio API). Some browsers require a user click (e.g. Start) before allowing audio.
