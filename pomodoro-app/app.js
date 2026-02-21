@@ -33,11 +33,23 @@
     if (elements.sessionLabel) elements.sessionLabel.textContent = state.session === 'work' ? 'Work' : (state.session === 'longBreak' ? 'Long break' : 'Break');
   }
 
+  function switchToNextSession() {
+    if (state.session === 'work') {
+      state.breakCount += 1;
+      state.session = 'break';
+      state.remainingSeconds = state.shortBreakMinutes * 60;
+    } else {
+      state.session = 'work';
+      state.remainingSeconds = state.workMinutes * 60;
+    }
+  }
+
   function tick() {
     if (state.remainingSeconds <= 0) {
       clearInterval(state.intervalId);
       state.intervalId = null;
       state.isRunning = false;
+      switchToNextSession();
       render();
       return;
     }

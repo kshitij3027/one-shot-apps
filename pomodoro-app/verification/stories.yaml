@@ -38,3 +38,13 @@ stories:
       Wait 2 seconds
       Click the Reset button
       Verify the timer shows 25:00 again
+
+  - name: "Work session transitions to Break at 00:00"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Verify the session label shows "Work" and the timer shows 25:00
+      Click the Start button
+      Wait until the timer reaches 00:00 (or use a short work duration if available)
+      Verify the session label changes to "Break"
+      Verify the timer shows 05:00 for the break session
