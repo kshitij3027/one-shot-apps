@@ -61,6 +61,22 @@
     render();
   }
 
+  function getSessionDurationSeconds() {
+    if (state.session === 'work') return state.workMinutes * 60;
+    if (state.session === 'longBreak') return state.longBreakMinutes * 60;
+    return state.shortBreakMinutes * 60;
+  }
+
+  function stop() {
+    pause();
+    state.remainingSeconds = getSessionDurationSeconds();
+    render();
+  }
+
+  function reset() {
+    stop();
+  }
+
   function init() {
     state.remainingSeconds = state.workMinutes * 60;
     state.session = 'work';
@@ -69,6 +85,8 @@
 
   if (elements.btnStart) elements.btnStart.addEventListener('click', start);
   if (elements.btnPause) elements.btnPause.addEventListener('click', pause);
+  if (elements.btnStop) elements.btnStop.addEventListener('click', stop);
+  if (elements.btnReset) elements.btnReset.addEventListener('click', reset);
 
   init();
 })();
