@@ -33,11 +33,42 @@
     if (elements.sessionLabel) elements.sessionLabel.textContent = state.session === 'work' ? 'Work' : (state.session === 'longBreak' ? 'Long break' : 'Break');
   }
 
+  function tick() {
+    if (state.remainingSeconds <= 0) {
+      clearInterval(state.intervalId);
+      state.intervalId = null;
+      state.isRunning = false;
+      render();
+      return;
+    }
+    state.remainingSeconds -= 1;
+    render();
+  }
+
+  function start() {
+    if (state.isRunning) return;
+    state.isRunning = true;
+    state.intervalId = setInterval(tick, 1000);
+  }
+
+  function pause() {
+    if (!state.isRunning) return;
+    state.isRunning = false;
+    if (state.intervalId) {
+      clearInterval(state.intervalId);
+      state.intervalId = null;
+    }
+    render();
+  }
+
   function init() {
     state.remainingSeconds = state.workMinutes * 60;
     state.session = 'work';
     render();
   }
+
+  if (elements.btnStart) elements.btnStart.addEventListener('click', start);
+  if (elements.btnPause) elements.btnPause.addEventListener('click', pause);
 
   init();
 })();

@@ -11,3 +11,15 @@ stories:
       Verify the timer display shows 25:00
       Verify the session label indicates "Work"
       Verify the four buttons Start, Pause, Stop, and Reset are visible
+
+  - name: "Start and Pause control the countdown"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Verify the timer display shows 25:00
+      Click the Start button
+      Wait 2 seconds
+      Verify the timer display has decreased (e.g. shows 24:58 or 24:57)
+      Click the Pause button
+      Wait 2 seconds
+      Verify the timer display has not changed (still shows the same time as after pause)
