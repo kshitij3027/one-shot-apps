@@ -60,3 +60,12 @@ stories:
       Verify the timer shows 02:00 (work session with custom 2 minutes)
       Wait until the work timer reaches 00:00 (or wait about 2 minutes)
       Verify the session label shows "Break" and the timer shows 01:00 (custom short break)
+
+  - name: "Long break every 4th break"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Set Work (min) to 1 and Short break (min) to 1 and Long break (min) to 2
+      Set "Long break every" to 4
+      Complete 4 work-break cycles: Start work, wait for 00:00, then verify break (short for 1st, 2nd, 3rd; long for 4th)
+      On the 4th break verify the session label shows "Long break" and the timer shows 02:00

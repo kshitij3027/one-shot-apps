@@ -58,9 +58,15 @@
   function switchToNextSession() {
     if (state.session === 'work') {
       state.breakCount += 1;
-      state.session = 'break';
-      state.remainingSeconds = state.shortBreakMinutes * 60;
+      if (state.breakCount % state.longBreakEvery === 0) {
+        state.session = 'longBreak';
+        state.remainingSeconds = state.longBreakMinutes * 60;
+      } else {
+        state.session = 'break';
+        state.remainingSeconds = state.shortBreakMinutes * 60;
+      }
     } else {
+      if (state.session === 'longBreak') state.breakCount = 0;
       state.session = 'work';
       state.remainingSeconds = state.workMinutes * 60;
     }
