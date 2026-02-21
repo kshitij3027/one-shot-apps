@@ -66,3 +66,51 @@ h1 {
   outline: 2px solid #e94560;
   outline-offset: 2px;
 }
+
+.settings {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+  text-align: left;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.settings-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.settings-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+
+.settings-grid label {
+  font-size: 0.9rem;
+}
+
+.settings-grid input {
+  width: 4rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  background: #16213e;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #eee;
+}
+
+.settings-grid input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

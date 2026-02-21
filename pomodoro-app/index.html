@@ -17,6 +17,20 @@
       <button type="button" id="btn-stop">Stop</button>
       <button type="button" id="btn-reset">Reset</button>
     </div>
+    <section class="settings" aria-label="Timer settings">
+      <h2 class="settings-title">Settings</h2>
+      <p class="settings-hint">Change when timer is stopped.</p>
+      <div class="settings-grid">
+        <label for="input-work">Work (min)</label>
+        <input type="number" id="input-work" min="1" max="60" value="25" aria-label="Work minutes">
+        <label for="input-short-break">Short break (min)</label>
+        <input type="number" id="input-short-break" min="1" max="60" value="5" aria-label="Short break minutes">
+        <label for="input-long-break">Long break (min)</label>
+        <input type="number" id="input-long-break" min="1" max="60" value="10" aria-label="Long break minutes">
+        <label for="input-long-every">Long break every (breaks)</label>
+        <input type="number" id="input-long-every" min="2" max="20" value="4" aria-label="Long break every N breaks">
+      </div>
+    </section>
   </main>
   <script src="app.js"></script>
 </body>

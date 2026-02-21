@@ -48,3 +48,15 @@ stories:
       Wait until the timer reaches 00:00 (or use a short work duration if available)
       Verify the session label changes to "Break"
       Verify the timer shows 05:00 for the break session
+
+  - name: "Custom work and break minutes apply when stopped"
+    url: "http://localhost:8085"
+    workflow: |
+      Navigate to http://localhost:8085
+      Verify the timer shows 25:00
+      Set the Work (min) input to 2
+      Set the Short break (min) input to 1
+      Click the Start button
+      Verify the timer shows 02:00 (work session with custom 2 minutes)
+      Wait until the work timer reaches 00:00 (or wait about 2 minutes)
+      Verify the session label shows "Break" and the timer shows 01:00 (custom short break)
